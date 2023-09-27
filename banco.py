@@ -7,7 +7,7 @@ try:
       conn = mysql.connector.connect(
             host='127.0.0.1',
             user='root',
-            password='K@yque5655'
+            password='180355'
       )
 except mysql.connector.Error as err:
       if err.errno == errorcode.ER_ACCESS_DENIED_ERROR:
@@ -23,13 +23,16 @@ cursor.execute("CREATE DATABASE LOGIN;")
 
 cursor.execute("USE LOGIN;")
 
+
 # criando tabelas
 TABLES = {}
 TABLES['Usuarios'] = ('''
-      CREATE TABLE usuarios (
-      email VARCHAR(255) PRIMARY KEY,
-      nome VARCHAR(255) not null,
-      senha VARCHAR(255) not null
+      CREATE TABLE Login (
+      id int NOT NULL AUTO_INCREMENT,
+      email varchar(255) NOT NULL,
+      username varchar(255) NOT NULL,
+      password varchar(255) NOT NULL,
+      PRIMARY KEY (id)
 )''')
 
 
