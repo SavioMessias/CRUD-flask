@@ -2,37 +2,58 @@ from flask import render_template, url_for, redirect, request
 from app import db,app
 from models import Login
 
-
 @app.route("/")
 def index():
     return render_template("index.html")
 
-@app.route("/newUser", methods=["POST"])
+
+
+#(C) CREATE:
+@app.route("/new_user", methods=["POST"])
 def register():
     nome = request.form["name"]
     email = request.form["email"]
     passwd = request.form["passwd"]
     
-    newUser = Login(username=nome, email=email, password=passwd)
+    new_user = Login(username=nome, email=email, password=passwd)
 
     teste = Login.query.where(Login.email == email).one_or_none()
     if teste is not None:
         return redirect(url_for("index"))
 
-    db.session.add(newUser)
+    db.session.add(new_user)
     db.session.commit()
 
     return redirect(url_for("index"))
 
 
-@app.route("/allUsers", methods=["GET"])
-def seeUsername():
-    allUsers  = Login.query.all()
-    return render_template("userList.html", todos = allUsers)
+#(R) READ:
+@app.route("/all_users", methods=["GET"])
+def view_users():
+    all_users  = Login.query.all()
+    return render_template("user_list.html", todos = all_users)
 
-@app.route("/deleteUser/<id>", methods=["GET","DELETE"])
-def deleteUser(id):
-    print(Login.query.where(Login.id == id).one_or_none())
+
+#(U) UPDATE:
+# TO ERRANDO AQUI TB
+# @app.route("/updt_user/<id>", methods=["GET", "POST",])
+# def render_edit(id):
+#     user = Login.query.filter(Login.id == id).all()
+#     print(user)
+#     return render_template("updt_user.html", user = user)
+
+# @app.route("/updt_user/<id>", methods=["PUT"])
+# def update_user(id):
+#     new_name = request.form["new_name"]
+#     new_password = request.form["new_password"]
+#     Login.query.filter(Login.id == id).update({"password": new_password, "username": new_name})
+#     db.session.commit()
+#     return 'ok'
+
+
+#(D) DELETE:
+@app.route("/delete_user/<id>", methods=["GET","DELETE"])
+def delete_user(id):
     Login.query.where(Login.id == id).delete()
     db.session.commit()
     return 'Usuario deletado com Sucesso: <a href="/">VOLTAR</a>'

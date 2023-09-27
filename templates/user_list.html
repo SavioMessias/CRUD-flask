@@ -8,7 +8,8 @@
 <body>
     {% for user in todos %}
     <h1>{{user.username}}</h1>
-    <a href="/deleteUser/{{user.id}}">Delete</a>
+    <a href="/delete_user/{{user.id}}">Delete</a>
+    <a href="/updt_user/{{user.id}}">Update</a>
     {% endfor %}
 </body>
 </html>
