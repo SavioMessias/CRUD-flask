@@ -15,7 +15,7 @@ def register():
     email = request.form["email"]
     passwd = request.form["passwd"]
     
-    new_user = Login(username=nome, email=email, password=passwd)
+    new_user = Login(username=nome, email=email, password=passwd) # type: ignore
 
     teste = Login.query.where(Login.email == email).one_or_none()
     if teste is not None:
@@ -35,20 +35,20 @@ def view_users():
 
 
 #(U) UPDATE:
-# TO ERRANDO AQUI TB
-# @app.route("/updt_user/<id>", methods=["GET", "POST",])
-# def render_edit(id):
-#     user = Login.query.filter(Login.id == id).all()
-#     print(user)
-#     return render_template("updt_user.html", user = user)
+@app.route("/updt_user/<id>", methods=["GET"])
+def render_edit(id):
+    user = Login.query.filter(Login.id == id).all()
 
-# @app.route("/updt_user/<id>", methods=["PUT"])
-# def update_user(id):
-#     new_name = request.form["new_name"]
-#     new_password = request.form["new_password"]
-#     Login.query.filter(Login.id == id).update({"password": new_password, "username": new_name})
-#     db.session.commit()
-#     return 'ok'
+    return render_template("updt_user.html", user = user)
+
+
+@app.route("/updt_user/<id>", methods=["GET", "PUT"])
+def update_user(id):
+    new_name = request.form["new_name"]
+    new_password = request.form["new_password"]
+    Login.query.filter(Login.id == id).update({"password": new_password, "username": new_name})
+    db.session.commit()
+    return 'ok'
 
 
 #(D) DELETE:
@@ -57,3 +57,4 @@ def delete_user(id):
     Login.query.where(Login.id == id).delete()
     db.session.commit()
     return 'Usuario deletado com Sucesso: <a href="/">VOLTAR</a>'
+

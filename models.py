@@ -1,5 +1,4 @@
 from app import db
-
 class Login(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(70), unique=True, nullable=False)
@@ -8,4 +7,3 @@ class Login(db.Model):
 
     def __repr__(self):
         return f"User('{self.username}', '{self.email}')"
-
