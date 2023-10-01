@@ -3,21 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>CRUD</title>
+    <link rel="stylesheet" href="/static/style/global.css">
+    <link rel="stylesheet" href="/static/style/index.css">
 </head>
 <body>
-    <form action="/new_user" method="post">
-        <label for="name">Name:</label>
-        <input type="text" name="name" id="name">
-        <label for="email">E-mail:</label>
-        <input type="email" name="email" id="email">
-        <label for="passwd">Password:</label>
-        <input type="password" name="passwd" id="passwd">
-        <input type="submit" value="Register">
-    </form>
+    <section>
+        <div class="title">
+            <h1>New Here?</h1>
+            <h2>Register your team!</h2>
+        </div>
+        <hr>
+        <form action="/new_user" method="post">
+            <label for="name">Name:</label>
+            <input type="text" name="name" id="name">
+            <label for="email">E-mail:</label>
+            <input type="email" name="email" id="email">
+            <label for="passwd">Password:</label>
+            <input type="password" name="passwd" id="passwd">
+            <input class="btn" type="submit" value="Register">
+        </form>
 
-    <a href="/all_users">BUTTON</a>
-
-    <h5>{{valores}}</h5>
+        <Button> 
+            <a href="/all_users">
+                <span>See your team </span>
+                <img width="96" height="96" src="https://img.icons8.com/external-tanah-basah-glyph-tanah-basah/96/007777/external-glyph-infographic-tanah-basah-glyph-tanah-basah-4.png" alt="external-glyph-infographic-tanah-basah-glyph-tanah-basah-4"/>
+            </a>
+        </Button>
+    </section>
+ 
 </body>
 </html>

@@ -3,13 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>CRUD</title>
+    <link rel="stylesheet" href="/static/style/global.css">
+    <link rel="stylesheet" href="/static/style/user_list.css">
 </head>
 <body>
-    {% for user in todos %}
-    <h1>{{user.username}}</h1>
-    <a href="/delete_user/{{user.id}}">Delete</a>
-    <a href="/updt_user/{{user.id}}">Update</a>
-    {% endfor %}
+    <section>
+        <h1> Your Team! </h1>
+        {% for user in todos %}
+        <div class="users">
+            <h2>{{user.username}}</h2>
+            <li>
+                <a href="/delete_user/{{user.id}}">Delete</a>
+                <a href="/updt_user?id={{user.id}}">Update</a>
+            </li>
+        </div>
+        <hr>
+        {% endfor %}
+    </section>
+    
 </body>
 </html>

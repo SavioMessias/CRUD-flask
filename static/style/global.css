@@ -2,9 +2,17 @@
 
 * {
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+  list-style-type: none;
 } 
 
+a {
+  color: #000;
+}
 body {
+  background-color: darkcyan;
   font-family: "Muli", sans-serif;
   display: flex;
   flex-direction: column;
@@ -12,5 +20,14 @@ body {
   justify-content: center;
   height: 100vh;
   overflow: hidden;
-  margin: 0;
+}
+
+section {
+  background-color: lightcyan;
+  width: 45%;
+  height: 70%;
+  border-radius: 7px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }

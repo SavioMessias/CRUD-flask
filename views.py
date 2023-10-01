@@ -35,15 +35,16 @@ def view_users():
 
 
 #(U) UPDATE:
-@app.route("/updt_user/<id>", methods=["GET"])
-def render_edit(id):
-    user = Login.query.filter(Login.id == id).all()
-
+@app.route("/updt_user", methods=["GET"])
+def render_edit():
+    id = request.args.get("id")
+    user = Login.query.filter_by(id = id).first()
     return render_template("updt_user.html", user = user)
 
 
-@app.route("/updt_user/<id>", methods=["GET", "PUT"])
-def update_user(id):
+@app.route("/updt_user", methods=["POST"])
+def update_user():
+    id = request.args.get("id")
     new_name = request.form["new_name"]
     new_password = request.form["new_password"]
     Login.query.filter(Login.id == id).update({"password": new_password, "username": new_name})

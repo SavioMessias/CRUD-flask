@@ -1,0 +1,28 @@
+section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.users {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 70%;
+    margin-top: 5%;
+}
+
+.users:first-of-type {
+    margin: 0;
+}
+
+h1 {
+    font-size: 28px;
+    margin-bottom: 5%;
+}
+
+hr {
+    border: 1px solid darkcyan;
+    width: 70%;
+    margin-top: 15px;
+}

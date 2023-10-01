@@ -3,15 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>CRUD</title>
+    <link rel="stylesheet" href="/static/style/global.css">
+    <link rel="stylesheet" href="/static/style/updt_user.css">
 </head>
 <body>
-    <form action="/updt_user/" method="post">
-        <label for="new_name">name</label>
-        <input type="text" name="new_name" id="new_name">
-        <label for="new_password">password</label>
-        <input type="password" name="new_password" id="new_password">
-        <input type="submit" value="submit">
-    </form>
+    <section class="update">
+        <form action="/updt_user?id={{user.id}}" method="post">
+            <label for="new_name">name</label>
+            <input type="text" name="new_name" id="new_name">
+            <label for="new_password">password</label>
+            <input type="password" name="new_password" id="new_password">
+            <input type="submit" value="submit">
+        </form>
+    </section>
+   
 </body>
 </html>
